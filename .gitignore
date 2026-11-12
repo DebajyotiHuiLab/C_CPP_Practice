@@ -1,0 +1,27 @@
+
+# Compiled executables
+*.exe
+
+# Object files
+*.o
+*.obj
+
+# Libraries
+*.dll
+*.so
+*.a
+*.lib
+
+# Build output directory
+/bin/
+
+# Debug symbols
+*.pdb
+
+# Temporary files
+*.tmp
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db

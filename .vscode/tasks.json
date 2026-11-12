@@ -1,0 +1,90 @@
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build C (GCC)",
+            "type": "process",
+            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "args": [
+                "-std=gnu23",
+                "-Wall",
+                "-Wextra",
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Build C++ (G++)",
+            "type": "process",
+            "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+            "args": [
+                "-std=gnu++20",
+                "-Wall",
+                "-Wextra",
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Run C with Input/Output Files",
+            "type": "process",
+            "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "& 'C:\\msys64\\ucrt64\\bin\\gcc.exe' -std=gnu23 -Wall -Wextra -g '${file}' -o '${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; $exe = '${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe'; $inputFile = '${workspaceFolder}\\input-output\\input.txt'; $outputFile = '${workspaceFolder}\\input-output\\output.txt'; $process = Start-Process -FilePath $exe -RedirectStandardInput $inputFile -RedirectStandardOutput $outputFile -NoNewWindow -Wait -PassThru; exit $process.ExitCode"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Run C++ with Input/Output Files",
+            "type": "process",
+            "command": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "& 'C:\\msys64\\ucrt64\\bin\\g++.exe' -std=gnu++20 -Wall -Wextra -g '${file}' -o '${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; $exe = '${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe'; $inputFile = '${workspaceFolder}\\input-output\\input.txt'; $outputFile = '${workspaceFolder}\\input-output\\output.txt'; $process = Start-Process -FilePath $exe -RedirectStandardInput $inputFile -RedirectStandardOutput $outputFile -NoNewWindow -Wait -PassThru; exit $process.ExitCode"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}
